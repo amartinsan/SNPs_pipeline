@@ -61,9 +61,10 @@
  ## The rest of the analysis was made using R 
  - The code is in: [VCF_Process.R](https://github.com/AdrianMtz-Santana/AmphoraHealth_Bioinformatic_Challenge2022_deliverable/blob/397eaf7bb3acfd12c30d0cd7b15e53ce2e3eb538/VCF_Process.R)
  
- To process the data i had to read A LOT 🥴 and watch many many videos.
+ To process the data i had to read A LOT of online guides 🥴 and watch many many videos.
  
- I had to use many online guides but most of the help came from: https://grunwaldlab.github.io/Population_Genetics_in_R/index.html
- 
- Also from: https://github.com/cmcouto-silva?tab=repositories 
+ most of the help came from: 
+ - https://grunwaldlab.github.io/Population_Genetics_in_R/index.html
+ - https://github.com/cmcouto-silva?tab=repositories 
+ - https://www.bioconductor.org/packages/devel/bioc/vignettes/SNPRelate/inst/doc/SNPRelate.html#overview
  
