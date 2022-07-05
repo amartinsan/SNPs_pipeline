@@ -19,10 +19,11 @@
     for file in *.csv ;
     do 	
     #sed has a confunsing syntax, more lines of sed instead of a long one with all the changes gets clearer 
+    #Remember to use g at the end, it depends in the version of sed to substtitute all ocurrences by default
     
 	  sed -i 's/,REF/#CHROM;POS,REF/' $file ; 
 	  sed -i 's/,ALT,ALT/,ALT/' $file ;
-	  sed -i 's/;/\t/' $file ;
+	  sed -i 's/;/\t/g' $file ;
 	  sed -i 's/,/\t/' $file ;
 	  sed -i 's/,/|/4g' $file ;
 	  sed -i 's/"//' $file ;
