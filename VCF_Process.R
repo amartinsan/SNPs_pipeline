@@ -62,6 +62,7 @@ library(poppr)
 library(ape)
 library(RColorBrewer)
 library(tidyr)
+library(parallel)
 
 Amphora.VCF <- read.vcfR("merge_genotype.vcf")
 #Read the Superpopulation codes
@@ -94,16 +95,6 @@ ploidy(gl.rubi) <- 2
 save(gl.rubi,pop.data,file="DATA_for_VCFr_analysis.rda")
 #The vcfr file is big, save apart. Sometimes you only need the genlight file.
 save(Amphora.VCF,file="VCFrfile.rda")
-load("DATA")
-
-
-
-
-library(VariantAnnotation)
-library(pegas)
-
-vcf_files=("C:/Users/AMS/Desktop/Amphora/AmphoraChallenge/Challenge_VCF/TestSmal_samples/merge_genotype.vcf")
-vcf_data_frame=VCFloci(vcf_files,what = "all",chunk.size = 1e9,quiet = F)
 
 
 
