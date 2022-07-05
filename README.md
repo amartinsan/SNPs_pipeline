@@ -2,7 +2,7 @@
  Code used for processing data from DataEngineering-GenomicsChallenge-Jun2022.zip.
  
  Samples where proccesed by using some bash functions to change the 382  raw files in tab-separated values to VCF.
- - Using the script: csv_to_vcf.sh
+ - Using the script: [csv_to_vcf.sh](https://github.com/AdrianMtz-Santana/AmphoraHealth_Bioinformatic_Challenge2022_deliverable/blob/397eaf7bb3acfd12c30d0cd7b15e53ce2e3eb538/csv_to_vcf.sh)
  
  code goes like this:
    
@@ -59,7 +59,7 @@
 
     
  ## The rest of the analysis was made using R 
- - The code is in: VCF_Process.R
+ - The code is in: [VCF_Process.R](https://github.com/AdrianMtz-Santana/AmphoraHealth_Bioinformatic_Challenge2022_deliverable/blob/397eaf7bb3acfd12c30d0cd7b15e53ce2e3eb538/VCF_Process.R)
  
  To process the data i had to read A LOT 🥴 and watch many many videos.
  
