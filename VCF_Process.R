@@ -95,6 +95,8 @@ ploidy(gl.rubi) <- 2
 save(gl.rubi,pop.data,file="DATA_for_VCFr_analysis.rda")
 #The vcfr file is big, save apart. Sometimes you only need the genlight file.
 save(Amphora.VCF,file="VCFrfile.rda")
-
-
+rubi.pca <- glPca(gl.rubi, nf = 3,parallel = T,n.cores = NULL)
+barplot(100*rubi.pca$eig/sum(rubi.pca$eig), col = heat.colors(50), main="PCA Eigenvalues")
+title(ylab="Percent of variance\nexplained", line = 2)
+title(xlab="Eigenvalues", line = 1)
 
