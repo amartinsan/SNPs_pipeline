@@ -95,8 +95,56 @@ ploidy(gl.rubi) <- 2
 save(gl.rubi,pop.data,file="DATA_for_VCFr_analysis.rda")
 #The vcfr file is big, save apart. Sometimes you only need the genlight file.
 save(Amphora.VCF,file="VCFrfile.rda")
-rubi.pca <- glPca(gl.rubi, nf = 3,parallel = T,n.cores = NULL)
+#Make a colors vector
+cols <- brewer.pal(n = nPop(gl.rubi), name = "Paired")
+#Didnt like that color for the NoCODE samples...
+cols[5]="darkgoldenrod" #Much better 
+                                        
+##Make and ordination plotfor clustering using vcfR
+rubi.pca <- glPca(gl.rubi, parallel = T,n.cores = NULL)
+#Graph of Eigenvalues
 barplot(100*rubi.pca$eig/sum(rubi.pca$eig), col = heat.colors(50), main="PCA Eigenvalues")
 title(ylab="Percent of variance\nexplained", line = 2)
 title(xlab="Eigenvalues", line = 1)
+#make biplot 
+rubi.pca.scores <- as.data.frame(rubi.pca$scores)
+rubi.pca.scores$pop <- pop(gl.rubi)
+set.seed(94)
+p <- ggplot(rubi.pca.scores, aes(x=PC1, y=PC2, colour=pop)) 
+p <- p + geom_point(size=2)
+                                        
+######### OKEy This is taking TO LONG: rubi.pca <- glPca(gl.rubi, parallel = T,n.cores = NULL) ....   ##############
+                                        
+#We can us seqarray for a faster approach 
+                                        
+#First we ned to replace de NA in merge_genotype.vcf samples 
 
+library(SeqArray)
+
+vcf.fn <- "filemerge_genotype.vcf"
+snpgdsVCF2GDS(vcf.fn, "test.gds", method="biallelic.only")
+snpgdsSummary("test.gds")
+genofile <- seqOpen("test.gds")
+snpset <- snpgdsLDpruning(genofile, ld.threshold=0.2)
+snpset.id <- unlist(unname(snpset))
+pca <- snpgdsPCA(genofile, snp.id=snpset.id, autosome.only = F)
+#Get percentage of variance 
+pc.percent <- pca$varprop*100
+#make data frame for a better plot
+tablePCA <- data.frame(sample.id = pca$sample.id,EV1 = pca$eigenvect[,1],EV2 = pca$eigenvect[,2],stringsAsFactors = FALSE)
+#Missing population data for groups
+popsample=cbind(sample.id, pop.data)
+tablePCA <- data.frame(sample.id = pca$sample.id,
+                  pop = popsample$Superpopulation.code [match(pca$sample.id, sample.id)],
+                  PC1=pca$eigenvect[,1],
+                  PC2 = pca$eigenvect[,2],stringsAsFactors = FALSE)
+
+#Finally plot ordination
+plotPCA=ggplot(tab, aes(x=PC1, y=PC2, colour=pop)) + geom_point(size=2) + scale_color_manual(values = cols) + geom_hline(yintercept = 0) + geom_vline(xintercept = 0)+theme_bw() + ggtitle("PCA with all samples") + theme(legend.position = "bottom", legend.title = element_blank(), axis.title = element_text(size = 17), axis.text = element_text(size = 14), legend.text = element_text(size = 15))
+
+#Plot PCA pairs
+lbls <- paste("PC", 1:3, "\n", format(pc.percent[1:3], digits=2), sep="")
+plotpair=pairs(pca$eigenvect[,1:3], col=cols, labels=lbls)
+
+#With the first two componentes we explain more tha 75% of the variance
+                  
