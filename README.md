@@ -59,3 +59,11 @@
 
     
  ## The rest of the analysis was made using R 
+ - The code is in: VCF_Process.R
+ 
+ To process the data i had to read A LOT 🥴 and watch many many videos.
+ 
+ I had to use many online guides but most of the help came from: https://grunwaldlab.github.io/Population_Genetics_in_R/index.html
+ 
+ Also from: https://github.com/cmcouto-silva?tab=repositories 
+ 
