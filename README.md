@@ -6,7 +6,7 @@
  
  code goes like this:
    
-   ## First we unzip the data and make some simbolic links to our working directory
+   ### First we unzip the data and make some simbolic links to our working directory
 
     mkdir AmphoraChallenge
     cd AmphoraChallenge
@@ -48,6 +48,14 @@
 	  sed -i 1i"##" $file 
 	  sed -i 1i"##File was a .csv raw data, transformed to a .vcf file" $file 
 	  sed -i 1i"##fileformat=VCFv4.1" $file ;
-    
+	  
+    done 1> CSVtoVCF_logout.txt 2> CSVtoVCF_error.txt
+   
+### Change file extension 
+	for file in *.csv; 
+	do 
+	mv -- "$f" "${f%.csv}.vcf"
+	done
+
     
  The rest of the anaysis was made using R 
