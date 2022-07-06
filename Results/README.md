@@ -12,3 +12,14 @@
  - How many groups are between samples
  -
  ![Plot3](https://github.com/AdrianMtz-Santana/AmphoraHealth_Bioinformatic_Challenge2022_deliverable/blob/main/Results/Plot_groups.png)
+
+
+It seems that
+ - Group 2 resembles AFR 
+ - Group 3 resembles EAS
+ - Group 4 resembles AMR
+ - Group 5 resembles SAS
+ - Group 6 resembles EUR
+ - Group 1 some samples between 2 and 4/6 (many of this samples are close to the center
+ 
+ Althhough 4, 5 and 6 are not well defined clusters.
