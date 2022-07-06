@@ -11,7 +11,7 @@
 
 ## With an Identity-By-State Analysis and MDS results are almost the same
 
-This is show observed groups have consistency across different ordinations.
+This shows that observed groups have consistency across different ordinations.
 
  ![Plot3](https://github.com/AdrianMtz-Santana/AmphoraHealth_Bioinformatic_Challenge2022_deliverable/blob/main/Results/MDS%20ibs.png)
 
@@ -30,4 +30,4 @@ It seems that
  - Group 6 resembles EUR
  - Group 1 some samples between 2 and 4/6 (many of this samples are close to the center
  
- Althhough 4, 5 and 6 are not well defined clusters.
+ Althhough 4 and 5 an are not well defined clusters.
