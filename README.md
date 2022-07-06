@@ -1,6 +1,8 @@
  # Deliverable for Amphora Health Challenge
  Code used for processing data from DataEngineering-GenomicsChallenge-Jun2022.zip.
  
+ [Challenge](https://github.com/AdrianMtz-Santana/AmphoraHealth_Bioinformatic_Challenge2022_deliverable/blob/main/Coding_Challenge%20Instructions_Data%20Engineer_Genomics_Aug2022.pdf)
+ 
  Samples where proccesed by using some bash functions to change the 382  raw files in tab-separated values to VCF.
  - Using the script: [csv_to_vcf.sh](https://github.com/AdrianMtz-Santana/AmphoraHealth_Bioinformatic_Challenge2022_deliverable/blob/397eaf7bb3acfd12c30d0cd7b15e53ce2e3eb538/csv_to_vcf.sh)
  
