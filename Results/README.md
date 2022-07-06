@@ -7,11 +7,19 @@
 - Values of the first three componentes. First one explaines more than 75% of the variance.
 
 ![Plot2](https://github.com/AdrianMtz-Santana/AmphoraHealth_Bioinformatic_Challenge2022_deliverable/blob/main/Results/Pairsplot.png)
- 
+
+
+## With an Identity-By-State Analysis and MDS results are almost the same
+
+This is show observed groups have consistency across different ordinations.
+
+ ![Plot3](https://github.com/AdrianMtz-Santana/AmphoraHealth_Bioinformatic_Challenge2022_deliverable/blob/main/Results/MDS%20ibs.png)
+
+
  ## Whats going on with the samples with no population ID?
  - How many groups are between samples
  -
- ![Plot3](https://github.com/AdrianMtz-Santana/AmphoraHealth_Bioinformatic_Challenge2022_deliverable/blob/main/Results/Plot_groups.png)
+ ![Plot4](https://github.com/AdrianMtz-Santana/AmphoraHealth_Bioinformatic_Challenge2022_deliverable/blob/main/Results/Plot_groups.png)
 
 
 It seems that
