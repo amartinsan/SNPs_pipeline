@@ -139,12 +139,64 @@ tablePCA <- data.frame(sample.id = pca$sample.id,
                   PC1=pca$eigenvect[,1],
                   PC2 = pca$eigenvect[,2],stringsAsFactors = FALSE)
 
-#Finally plot ordination
-plotPCA=ggplot(tab, aes(x=PC1, y=PC2, colour=pop)) + geom_point(size=2) + scale_color_manual(values = cols) + geom_hline(yintercept = 0) + geom_vline(xintercept = 0)+theme_bw() + ggtitle("PCA with all samples") + theme(legend.position = "bottom", legend.title = element_blank(), axis.title = element_text(size = 17), axis.text = element_text(size = 14), legend.text = element_text(size = 15))
+#Finally! a plot ordination
+plotPCA=ggplot(tablePCA, aes(x=PC1, y=PC2, colour=pop)) + geom_point(size=2) + scale_color_manual(values = cols) + geom_hline(yintercept = 0) + geom_vline(xintercept = 0)+theme_bw() + ggtitle("PCA with all samples") + theme(legend.position = "bottom", legend.title = element_blank(), axis.title = element_text(size = 17), axis.text = element_text(size = 14), legend.text = element_text(size = 15))
 
 #Plot PCA pairs
 lbls <- paste("PC", 1:3, "\n", format(pc.percent[1:3], digits=2), sep="")
 plotpair=pairs(pca$eigenvect[,1:3], col=cols, labels=lbls)
 
-#With the first two componentes we explain more tha 75% of the variance
-                  
+#With the first two components more than 75% of the variance is explained!!!
+
+#But what about the NOCODE
+
+#How many groups are they in the data.
+
+#For that an Identity by state analysis followed by hclustering would be necessary
+
+ibs <- snpgdsIBS(genofile,remove.monosnp = F)
+ibsmax=data.frame(ibs$ibs)
+#Substitute NaN to 0
+ibsmax[is.na(ibsmax)] <- 0
+ibs$ibs = as.matrix(ibsmax)
+
+loc <- cmdscale(1 - ibs$ibs, k = 2)
+loz=as.data.frame(loc)
+race <- as.factor(popsample$Superpopulation.code)
+MDSPLOT=ggplot(loz, aes(x=V1, y=V2, colour=race)) + geom_point(size=2) +scale_color_manual(values=cols)+geom_hline(yintercept = 0) + geom_vline(xintercept = 0) + theme_bw() +theme(legend.title = element_blank(), axis.title = element_blank(), axis.text = element_text(size = 14), legend.text = element_text(size = 15))
+
+#Then we do de hclust and dendogram 
+ibs <- snpgdsIBS(genofile,remove.monosnp = F)
+ibsmax=data.frame(ibs$ibs)
+#Substitute NaN to 0
+ibsmax[is.na(ibsmax)] <- 0
+ibs$ibs = as.matrix(ibsmax)
+
+#Make the clusters
+ibs.hc <- snpgdsHCluster(ibs)
+
+#MaKE A DENDONGRAM 
+rv <- snpgdsCutTree(ibs.hc,n.perm = 10000)
+#6 GROUPS but only 5 Population codes, 6 if you consider the NoCode as one
+
+#Make a dendogram with the groups code
+rv2 <- snpgdsCutTree(ibs.hc, samp.group=as.factor(popsample$Superpopulation.code))
+
+#So, there are 6 groups, how are they position acrossrvid=rv[["sample.id"]]
+
+#First lets join the popsample with the knew groups
+rvid=rv[["sample.id"]]
+rvorder=rv[["samp.order"]]
+rvgroup=rv[["samp.group"]]
+
+datarv=data.frame(rvid,rvorder,rvgroup)
+row.names(popsample)=popsample$sample.id
+row.names(datarv)=datrv$rvid
+#Merge both tables
+GROUPS=merge(datrv,popsample,by =0,all = T)
+#Now we can redo the PCA with the more "real groups"
+tablePCA <- data.frame(sample.id = pca$sample.id,
+pop = GROUPS$rvgroup [match(pca$sample.id, sample.id)],
+PC1=pca$eigenvect[,1],
+PC2 = pca$eigenvect[,2],stringsAsFactors = FALSE)
+plotPCA_groups=ggplot(tablePCA, aes(x=PC1, y=PC2, colour=pop)) + geom_point(size=2) + scale_color_manual(values = cols) + geom_hline(yintercept = 0) + geom_vline(xintercept = 0)+theme_bw() + ggtitle("PCA with all samples") + theme(legend.position = "bottom", legend.title = element_blank(), axis.title = element_text(size = 17), axis.text = element_text(size = 14), legend.text = element_text(size = 15))
