@@ -1,4 +1,4 @@
-## Fina PCA ordination 
+## PCA ordination 
 
 - The AFR and EAS populations where the ones that grouped the most.
 
