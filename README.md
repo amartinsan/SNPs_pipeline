@@ -68,6 +68,11 @@
  - https://github.com/cmcouto-silva?tab=repositories 
  - https://www.bioconductor.org/packages/devel/bioc/vignettes/SNPRelate/inst/doc/SNPRelate.html#overview
  
+ ## Results for the clustering/ordination of all provided samples are shown in Results folder
+ 
+ -Also the PNG graphs and merged_genotype.vcf file with all samples.
+ 
+ 
  ## For the file to take up new data, check the folder Feed_newDATA
  
  The code to work requires to run in the same folder as the file intented to parse to the large merge_genotype.vcf 
