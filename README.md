@@ -3,24 +3,25 @@
  
  [Challenge](https://github.com/AdrianMtz-Santana/AmphoraHealth_Bioinformatic_Challenge2022_deliverable/blob/main/Coding_Challenge%20Instructions_Data%20Engineer_Genomics_Aug2022.pdf)
  
- Samples where proccesed by using some bash functions to change the 382  raw files in tab-separated values to VCF.
+ Samples were processed using some bash functions to change the 382 raw files in tab-separated values to VCF.
+ 
  - Using the script: [csv_to_vcf.sh](https://github.com/AdrianMtz-Santana/AmphoraHealth_Bioinformatic_Challenge2022_deliverable/blob/397eaf7bb3acfd12c30d0cd7b15e53ce2e3eb538/csv_to_vcf.sh)
  
  code goes like this:
    
-   ### First we unzip the data and make some simbolic links to our working directory
+   ### First, we unzip the data and make some symbolic links to our working directory
 
     mkdir AmphoraChallenge
     cd AmphoraChallenge
     ln -s ~/DataEngineering-GenomicsChallenge-Jun2022/Challenge/Challenge\ Samples/Challenge\ Samples/* .
-   ### The .csv files lack some proccesing to transform to a .vcf file.	
-   ### First the structure has to be arranged to better manipulation.
-   ### This can be done in R or Python, but also with simple BASH and AWK without the need of importing to Python or R before Clustering or VCF analysis.
-   ### Files already have some columns: CHROM,POS,REF,ALT, and part of FORMAT in GT.
+   ### The .csv files lack some processing to transform to a .vcf file.	
+   ### First, the structure has to be arranged for better manipulation.
+   ### This can be done in R or Python, but with simple BASH and AWK without importing to Python or R before Clustering or VCF analysis.
+   ### Files have some columns: CHROM, POS, REF, ALT, and part of FORMAT in GT.
    
     for file in *.csv ;
     do 	
-    #sed has a confunsing syntax, more lines of sed instead of a long one with all the changes gets clearer 
+    #sed has a confusing  syntax; more lines of sed instead of a long one with all the changes gets clearer 
     
 	  sed -i 's/,REF/#CHROM;POS,REF/' $file ; 
 	  sed -i 's/,ALT,ALT/,ALT/' $file ;
