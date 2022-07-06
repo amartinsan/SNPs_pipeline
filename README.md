@@ -70,4 +70,4 @@
  
  ## For the file to take up new data, check the folder Feed_newDATA
  
- The code to work requires to run in the same folder as 
+ The code to work requires to run in the same folder as the file intented to parse to the large merge_genotype.vcf with the VCF-DATA.rda file.
