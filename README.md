@@ -71,6 +71,22 @@
  - https://github.com/cmcouto-silva?tab=repositories 
  - https://www.bioconductor.org/packages/devel/bioc/vignettes/SNPRelate/inst/doc/SNPRelate.html#overview
  
+ ## List of Libraries to install 
+ - data.table
+ - vcfr
+ - SNPRelate 
+ - dplyr
+ - poppr
+ - ape 
+ - RColorBrewer
+ - tidyr
+ - parllell
+ - SeqArray
+ - ggploy 
+ - 
+ 
+ 
+ 
  ## Results for the clustering/ordination of all provided samples are shown in Results folder
  
  -Also the PNG graphs and merged_genotype.vcf file with all samples.
