@@ -96,3 +96,19 @@
  
  The code to work requires to run in the same folder as the file intented to parse to the large merge_genotype.vcf 
  also with the PCA-vcfa-data.rda file. 
+ 
+ 
+ ## Perspectives
+ 
+- Other ordination/clustering techniques UMAP or t-SNE techniches are kinda new techniques that can cluster samples in an efficient way. 
+
+Althought that does not mean that PCA, PCoA or NMDS classical ordinations cant work well for some data. 
+
+For example when you are testing stuff like dummy data
+
+- This can be scalable in a server with Nextflow, Docker or API (Flask)
+
+- Betwern VCFr and SeArray/SNPrelate libraries a testing to compare wich is faster or efficient for big ammounts of data and samples should be done.
+
+
+
